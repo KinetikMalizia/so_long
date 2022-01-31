@@ -1,31 +1,90 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 13:06:57 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/01/19 10:32:21 by fmalizia         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-typedef struct s_data{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+# include "mlx/mlx.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h>
+//# include "../Libft/libft.h"
 
-typedef struct p_data{
-	int	x;
-	int	y;
-}				t_player;
+/* ********** defines to make work easier ********** */
 
-void	mlx_px_put(t_data *data, int x, int y, int color);
+# define IMG_W 32
+# define IMG_H 32
+# define ESC 53
+# define W 6
+# define A 12
+# define S 1
+# define D 2
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
+
+typedef struct s_img
+{
+    void    *ground;
+    void    *wall;
+    void    *player;
+    void    *collectable;
+    void    *exit_s;
+    void    *exit_w;
+}               t_img;
+
+typedef struct s_player
+{
+    int p_x;
+    int p_y;
+    int delta_x;
+    int delta_y;
+}               t_player;
+
+typedef struct s_map
+{
+	char	**map;
+	int		x;
+	int		y;
+	int		collectables;
+}				t_map;
+
+typedef struct s_data {
+    void        *mlx;
+    void        *win;
+    int         size_x;
+    int         size_y;
+    int         steps;
+    t_map       map;
+    t_img       img;
+    t_player    player;
+}               t_data;
+
+
+int     test(int keycode, t_data *data);
+int     action(int keycode, t_data *vars);
+int     win_exit(int keycode, t_data *vars);
+int     ft_line_length(int fd);
+int	    ft_count_lines(int fd, int x, int img_w);
+char	*ft_strnstr(const char *s1, const char *s2, unsigned long n);
+char	*ft_strjoin_malloc(char *s1, char *buff);
+size_t	ft_strlen(const char *s);
+int     keyhook_inputs(int keycode, t_data *vars);
+void	ft_window_size(t_data *data, char **argv);
+void	*ft_calloc(size_t c, size_t n);
+void	ft_bzero(void *b, size_t len);
+void	init_map(char *path, t_data *data);
+void    rd_map(int fd, t_data *data);
+int 	create_back(t_data *data);
+void	put_object(t_data *data);
+void    wall_check(t_data *data);
+void    setup_img(t_data *data);
+void    setup_player(t_data *data);
+int     mvt_check(t_data *data);
+void    prline(char *str);
+void    win_game(t_data *data);
+void    next_frame(t_data *data);
+void    put_player(t_data *data);
+void    collect(t_data *data, int new_x, int new_y);
+void    print_map(t_data *data);
 
 #endif
