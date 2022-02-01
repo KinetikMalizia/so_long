@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:07:31 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/01/27 17:08:33 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/02/01 12:24:17 by jcarlen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
-
 
 char	*ft_strjoin_malloc(char *s1, char *buff)
 {
@@ -40,8 +38,7 @@ char	*ft_strjoin_malloc(char *s1, char *buff)
 	str[ft_strlen(s1) + ft_strlen(buff)] = '\0';
 	free(s1);
 	return (str);
-	}
-
+}
 
 char	*ft_strnstr(const char *s1, const char *s2, unsigned long n)
 {

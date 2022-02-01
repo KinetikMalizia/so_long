@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+         #
+#    By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 14:18:51 by jeancarlen        #+#    #+#              #
-#    Updated: 2022/01/28 12:01:55 by jeancarlen       ###   ########.fr        #
+#    Updated: 2022/02/01 14:06:06 by jcarlen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC	=	so_long.c\
 		check_if_right.c\
 		setup_img.c\
 		so_long_utils2.c\
+		map_next.c\
 
 
 OBJS = $(SRC:.c=.o)
@@ -31,7 +32,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 		gcc -Iminilibx -c $< -o $@
 
-all: name
+all: $(NAME)
 
 clean:
 		rm -f $(OBJS)
