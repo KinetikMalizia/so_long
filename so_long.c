@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:19:38 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/02/01 14:38:18 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:58:22 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 int	win_exit(int keycode, t_data *data)
 {
-	mlx_destroy_window(data->mlx, data->win);
-	printf("suka\nyou move to trash\n");
+	printf("\nsuka\nyou move to trash\n");
 	exit(0);
 }
 
-int	key_hook(int keycode, t_data *data)
+int	key_hook(t_data *data)
 {
-	mlx_hook(data->win, 2, 1L << 0, keyhook_inputs, data);
-	mlx_hook(data->win, 33, 1L << 1, win_exit, data);
+	mlx_hook(data->win, 2, 1L << 1, keyhook_inputs, data);
+	mlx_hook(data->win, 17, 1L << 0, win_exit, data);
 	return (0);
 }
 
@@ -31,6 +30,7 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	ft_window_size(&data, av);
+	prline("Press any key to start!", 0);
 	data.map.map = ft_calloc(data.size_y + 1, sizeof(char *));
 	data.mlx = mlx_init();
 	if (!data.mlx)
@@ -39,8 +39,8 @@ int	main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	data.win = mlx_new_window(data.mlx, data.size_x,
-			data.size_y, "MEGAEXTRMDEATHMACHINE");
+			data.size_y, "MEGAXTRMDEATHMACHINE");
 	init_map(av[1], &data);
-	mlx_key_hook(data.win, key_hook, &data);
+	mlx_loop_hook(data.mlx, key_hook, &data);
 	mlx_loop(data.mlx);
 }

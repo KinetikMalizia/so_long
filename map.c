@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:07:45 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/02/01 14:32:26 by jcarlen          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:04:38 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ int	ft_count_lines(int fd, int x, int img_w)
 	while (bytes == 1)
 	{
 		bytes = read(fd, buffer, 1);
-		if (bytes != 1 && i != (x / img_w))
-			exit_error();
+		if (!(bytes == 0 && buffer[0] == '\n'))
+			if (bytes != 1 && i != (x / img_w))
+				exit_error();
 		if (i == (x / img_w))
 		{
 			linecount++;
@@ -74,10 +75,10 @@ void	ft_window_size(t_data *data, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error\nInvalid map_path/map\n");
+		prline("Error\nInvalid map_path/map\n", 0);
 		exit(EXIT_FAILURE);
 	}
-	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
+	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL) //fix the ckeck
 	{
 		prline("Error\nmap has to be .ber", 0);
 		exit(EXIT_FAILURE);
@@ -95,6 +96,7 @@ void	init_map(char *path, t_data *data)
 	setup_img(data);
 	create_back(data);
 	setup_player(data);
-	put_object(data);
 	wall_check(data);
+	put_object(data);
+	check_player_exit(data);
 }

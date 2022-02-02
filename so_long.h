@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:19:57 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/02/01 16:29:21 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:04:41 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,22 @@
 # define LEFT 123
 # define RIGHT 124
 
+typedef struct s_wall
+{
+	void	*wall1;
+	void	*wall2;
+	void	*wall3;
+	void	*wall4;
+}				t_wall;
+
 typedef struct s_img
 {
-	void	*ground;
-	void	*wall;
-	void	*player;
-	void	*collectable;
-	void	*exit_s;
-	void	*exit_w;
+	t_wall		*wall;
+	void		*ground;
+	void		*player;
+	void		*collectable;
+	void		*exit_s;
+	void		*exit_w;
 }				t_img;
 
 typedef struct s_player
@@ -55,6 +63,8 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		collectables;
+	int		play;
+	int		exit;
 }				t_map;
 
 typedef struct s_data {
@@ -63,6 +73,7 @@ typedef struct s_data {
 	int			size_x;
 	int			size_y;
 	int			steps;
+	int			wall_flag;
 	t_map		map;
 	t_img		img;
 	t_player	player;
@@ -96,5 +107,9 @@ void	print_map(t_data *data);
 void	print_objects(t_data *data, int x, int y);
 void	print_map_2(t_data *data, int x, int y);
 void	ft_putstr_fd(char *s, int fd);
+void	setup_wall(t_data *data);
+void	turn_player(t_data *data, int type, int w, int h);
+void	print_wall(t_data *data, int x, int y);
+void	check_player_exit(t_data *data);
 
 #endif

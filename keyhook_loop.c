@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 15:16:18 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/02/01 14:35:21 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:58:58 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int	keyhook_inputs(int keycode, t_data *data)
 {
+	int	w;
+	int	h;
+
 	if (keycode == ESC)
 		win_exit(keycode, data);
 	if (keycode == UP || keycode == W)
-		data->player.delta_y = -1;
+		turn_player(data, 1, w, h);
 	if (keycode == DOWN || keycode == S)
-		data->player.delta_y = +1;
+		turn_player(data, 2, w, h);
 	if (keycode == LEFT || keycode == A)
-		data->player.delta_x = -1;
+		turn_player(data, 3, w, h);
 	if (keycode == RIGHT || keycode == D)
-		data->player.delta_x = +1;
+		turn_player(data, 4, w, h);
 	next_frame(data);
 	return (0);
 }
@@ -70,13 +73,13 @@ void	print_map(t_data *data)
 		}
 		x += 1;
 	}
+	data->wall_flag = 0;
 }
 
 void	print_map_2(t_data *data, int x, int y)
 {
 	if (data->map.map[y][x] == '1')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.wall, x * IMG_W, y * IMG_H);
+		print_wall(data, x, y);
 	else
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img.ground, x * IMG_W, y * IMG_H);

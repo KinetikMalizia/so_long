@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_next.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:53:50 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/02/01 12:34:30 by jcarlen          ###   ########.fr       */
+/*   Updated: 2022/02/02 15:59:03 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	rd_map(int fd, t_data *data)
 			++i;
 	}
 	data->map.collectables = 0;
+	data->wall_flag = 0;
+	data->map.play = 0;
+	data->map.exit = 0;
 }
 
 int	create_back(t_data *data)
@@ -72,17 +75,18 @@ void	put_object(t_data *data)
 		}
 		x += 1;
 	}
+	data->wall_flag = 0;
 }
 
 void	print_objects(t_data *data, int x, int y)
 {
 	if (data->map.map[y][x] == '1')
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.wall, x * IMG_W, y * IMG_H);
+		print_wall(data, x, y);
 	if (data->map.map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img.player, x * IMG_W, y * IMG_H);
+		data->map.play += 1;
 		data->player.p_x = x;
 		data->player.p_y = y;
 	}
@@ -93,6 +97,9 @@ void	print_objects(t_data *data, int x, int y)
 		data->map.collectables += 1;
 	}
 	if (data->map.map[y][x] == 'E')
+	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img.exit_s, x * IMG_W, y * IMG_H);
+		data->map.exit += 1;
+	}
 }
