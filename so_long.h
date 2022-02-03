@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arvnrlen <arvenn@student.42.fr>          +#+  +:+       +#+          */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:19:57 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/02/02 16:04:41 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/02/03 11:14:05 by arvn         ###   ########.fr     	  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define DOWN 125
 # define LEFT 123
 # define RIGHT 124
+# define MAX_X 1080
+# define MAX_Y 720
 
 typedef struct s_wall
 {
@@ -106,10 +108,69 @@ void	collect(t_data *data, int new_x, int new_y);
 void	print_map(t_data *data);
 void	print_objects(t_data *data, int x, int y);
 void	print_map_2(t_data *data, int x, int y);
-void	ft_putstr_fd(char *s, int fd);
 void	setup_wall(t_data *data);
 void	turn_player(t_data *data, int type, int w, int h);
 void	print_wall(t_data *data, int x, int y);
 void	check_player_exit(t_data *data);
+void	map_length(t_data *data);
+void	exit_error(void);
+int		key_hook(t_data *data);
 
 #endif
+
+/*
+
+check
+	map_length /
+	check_player_exit
+	ft_window_size
+	wall_check
+input
+	keyhook_inputs
+
+map_init
+	ft_count_lines
+	ft_line_length
+	ft_strlen
+	init_map
+	rd_map
+	****************
+
+setup_memory
+	setup_wall
+	setup_img
+	setup_player
+
+run_prog
+	collect
+	put_player
+	next_frame
+	mvt_check
+	mvt_check_1
+
+print
+	print_wall
+	turn_player
+	print_map
+	print_map_2
+	*************
+	create_back
+	put_object
+	print_objects
+
+so_long
+	main
+	win_exit
+	win_game
+
+so_long_utils
+	ft_strnstr
+	ft_strjoin_malloc
+	ft_strlen
+	ft_calloc
+	ft_bzero
+
+print_text
+	prline
+	ft_putstr_fd
+*/
