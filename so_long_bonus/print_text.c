@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_text.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:00:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 11:45:375 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/04 16:36:52 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,19 @@ void	prline(char *str, int steps)
 void	print_hud(t_data *data, char *string)
 {
 	char	*steps;
-	mlx_put_image_to_window(data->mlx, data->win, data->img.hub_bg, 0, data->size_y);
-	mlx_string_put(data->mlx, data->win, (data->size_x / 2) - 20, data->size_y + 20, 0xfffafa, "steps:");
+
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->img.hub_bg, data->size_x / 2 - 175, data->size_y);
+	mlx_string_put(data->mlx, data->win,
+		(data->size_x / 2) - 25, data->size_y + 20, 0xfffafa, "steps:");
 	steps = ft_itoa(data->steps);
-	mlx_string_put(data->mlx, data->win, (data->size_x / 2) + 25, data->size_y + 20, 0xfffafa, steps);
+	mlx_string_put(data->mlx, data->win,
+		(data->size_x / 2) + 18, data->size_y + 20, 0xfffafa, steps);
 	free(steps);
 	if (string)
-		mlx_string_put(data->mlx, data->win, data->size_x / 2 - 20, data->size_y + 40, 0xff0000, string);
+		mlx_string_put(data->mlx, data->win,
+			data->size_x / 2 - ((ft_strlen(string) / 2) * 7),
+			data->size_y + 40, 0xff0000, string);
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -70,4 +76,3 @@ static void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, (const void *)&c, 1);
 }
-

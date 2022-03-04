@@ -33,6 +33,7 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	data.z = 0;
+	data.delay = 1500;
 	ft_window_size(&data, av);
 	ft_putstr_fd("***************************\n", 1);
 	data.map.map = ft_calloc(data.size_y + 1, sizeof(char *));

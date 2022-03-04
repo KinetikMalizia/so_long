@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_memory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:47:43 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 15:01:48 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/04 11:07:54 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	setup_img(t_data *data)
 	data->img.ground = mlx_xpm_file_to_image(data->mlx,
 			"./sprite_xpm/tile1.xpm", &width, &height);
 	data->img.player = mlx_xpm_file_to_image(data->mlx,
-			"./sprite_xpm/player_ship.xpm", &width, &height);
+			"./sprite_xpm/supervan_R.xpm", &width, &height);
 	data->img.collectable = mlx_xpm_file_to_image(data->mlx,
 			"./sprite_xpm/collectable.xpm", &width, &height);
 	data->img.exit_s = mlx_xpm_file_to_image(data->mlx,

@@ -30,8 +30,8 @@
 # define DOWN 125
 # define LEFT 123
 # define RIGHT 124
-# define MAX_X 1080
-# define MAX_Y 720
+# define MAX_X 5120
+# define MAX_Y 1440
 
 typedef struct s_wall
 {
@@ -79,6 +79,7 @@ typedef struct s_data {
 	int			steps;
 	int			wall_flag;
 	int			z;
+	int			delay;
 	t_map		map;
 	t_img		img;
 	t_player	player;
@@ -182,7 +183,7 @@ print_text
 	ft_putstr_fd
 */
 
-/*changé la fusée en SUPERVAN
+/*
 drip de pizza ?
 timer ?
 refaire la propreté

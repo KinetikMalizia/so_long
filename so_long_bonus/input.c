@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:44:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 15:28:553 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/04 14:26:44 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,17 @@ int	keyhook_inputs(int keycode, t_data *data)
 int	key_hook(t_data *data)
 {
 	data->z += 1;
-	if (data->z == 3000)
-		data->player.offset = 15;
-	if (data->z == 6000)
-		data->player.offset = -15;
-	if (data->z == 9000)
+	if (data->z == data->delay * 1 || data->z == data->delay * 3)
+		data->player.offset = 2;
+	if (data->z == data->delay * 2)
+		data->player.offset = 5;
+	if (data->z == data->delay * 4)
+		data->player.offset = 0;
+	if (data->z == data->delay * 5 || data->z == data->delay * 7)
+		data->player.offset = -2;
+	if (data->z == data->delay * 6)
+		data->player.offset = -5;
+	if (data->z == data->delay * 8)
 	{
 		data->player.offset = 0;
 		data->z = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_prog.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:48:42 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 16:09:25 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/04 16:30:03 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	mvt_check_1(t_data *data, int new_x, int new_y)
 			win_game(data);
 		else
 		{
-			print_hud(data, "you didn't eat all the pizzas!");
+			print_hud(data, "Save all the pizzas!");
 			return (0);
 		}
 	}

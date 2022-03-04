@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:45:07 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 15:01:48 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/04 16:38:14 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ void	init_map(char *path, t_data *data)
 	wall_check(data);
 	put_object(data);
 	check_player_exit(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.hub_bg, 0, data->size_y);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.hub_bg,
+		data->size_x / 2 - 175, data->size_y);
+	mlx_string_put(data->mlx, data->win,
+		(data->size_x / 2) - 35, data->size_y + 30,
+		0xfffafa, "Press any key to start!");
 }
 
 void	rd_map(int fd, t_data *data)

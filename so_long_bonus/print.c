@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:56:46 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 16:24:58 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/04 16:36:25 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,19 @@ void	print_wall(t_data *data, int x, int y)
 void	turn_player(t_data *data, int type, int w, int h)
 {
 	if (type == 1)
-	{
-		data->img.player = mlx_xpm_file_to_image(data->mlx,
-				"./sprite_xpm/player_ship_up.xpm", &w, &h);
 		data->player.delta_y = -1;
-	}
 	if (type == 2)
-	{
-		data->img.player = mlx_xpm_file_to_image(data->mlx,
-				"./sprite_xpm/player_ship.xpm", &w, &h);
 		data->player.delta_y = +1;
-	}
 	if (type == 3)
 	{
 		data->img.player = mlx_xpm_file_to_image(data->mlx,
-				"./sprite_xpm/player_ship_left.xpm", &w, &h);
+				"./sprite_xpm/supervan_L.xpm", &w, &h);
 		data->player.delta_x = -1;
 	}
 	if (type == 4)
 	{
 		data->img.player = mlx_xpm_file_to_image(data->mlx,
-				"./sprite_xpm/player_ship_right.xpm", &w, &h);
+				"./sprite_xpm/supervan_R.xpm", &w, &h);
 		data->player.delta_x = +1;
 	}
 }
