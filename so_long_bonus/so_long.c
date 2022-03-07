@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "stdio.h"
 
 int	test(t_data *data);
 
@@ -32,6 +33,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
+	data.rng = 0;
 	data.z = 0;
 	data.delay = 1500;
 	ft_window_size(&data, av);

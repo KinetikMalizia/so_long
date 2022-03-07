@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:00:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/04 16:36:52 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:45:47 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,20 @@ void	prline(char *str, int steps)
 
 void	print_hud(t_data *data, char *string)
 {
-	char	*steps;
+	char	*num;
 
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->img.hub_bg, data->size_x / 2 - 175, data->size_y);
 	mlx_string_put(data->mlx, data->win,
 		(data->size_x / 2) - 25, data->size_y + 20, 0xfffafa, "steps:");
-	steps = ft_itoa(data->steps);
+	num = ft_itoa(data->steps);
 	mlx_string_put(data->mlx, data->win,
-		(data->size_x / 2) + 18, data->size_y + 20, 0xfffafa, steps);
-	free(steps);
+		(data->size_x / 2) + 18, data->size_y + 20, 0xfffafa, num);
+	num = ft_itoa(data->player.collected);
+	if (data->player.upgrade > 0)
+		mlx_string_put(data->mlx, data->win,
+			(data->size_x / 2) + 100, data->size_y + 20, 0xfffafa, num);
+	free(num);
 	if (string)
 		mlx_string_put(data->mlx, data->win,
 			data->size_x / 2 - ((ft_strlen(string) / 2) * 7),

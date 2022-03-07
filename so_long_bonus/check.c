@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:42:12 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 10:54:18 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/07 11:39:35 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	map_length(t_data *data)
 {
 	if (data->size_y > MAX_Y || data->size_x > MAX_X)
-	prline("/!\\ map is too big! /!\\ \n", 0);
+		prline("/!\\ map is too big! /!\\ \n", 0);
 }
 
 void	check_player_exit(t_data *data)

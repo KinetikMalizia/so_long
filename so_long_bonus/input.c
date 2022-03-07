@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:44:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/04 14:26:44 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:29:17 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	keyhook_inputs(int keycode, t_data *data)
 		turn_player(data, 3, w, h);
 	if (keycode == RIGHT || keycode == D)
 		turn_player(data, 4, w, h);
+	if (keycode == 3 && data->player.upgrade)
+		shoot(data);
+	printf("%d\n", data->rng);
 	return (0);
 }
 
@@ -48,7 +51,7 @@ int	key_hook(t_data *data)
 		data->player.offset = 0;
 		data->z = 0;
 	}
-	if (data->z % 200 == 0)
+	if (data->z % 2000 == 0)
 		next_frame(data);
 	mlx_hook(data->win, 2, 1L << 1, keyhook_inputs, data);
 	mlx_hook(data->win, 17, 1L << 0, win_exit, data);

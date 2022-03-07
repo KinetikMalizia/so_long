@@ -50,6 +50,9 @@ typedef struct s_img
 	void		*exit_s;
 	void		*exit_w;
 	void		*hub_bg;
+	void		*enemy;
+	void		*expl;
+	void		*upgrade;
 }				t_img;
 
 typedef struct s_player
@@ -58,7 +61,15 @@ typedef struct s_player
 	int	p_y;
 	int	delta_x;
 	int	delta_y;
+	int	direction;
+	int	collected;
 	int	offset;
+	int	upgrade;
+	int	enemy;
+	int	enemy_p_x;
+	int	enemy_p_y;
+	int	enemy_delta_x;
+	int	enemy_delta_y;
 }				t_player;
 
 typedef struct s_map
@@ -74,6 +85,7 @@ typedef struct s_map
 typedef struct s_data {
 	void		*mlx;
 	void		*win;
+	int			rng;
 	int			size_x;
 	int			size_y;
 	int			steps;
@@ -123,6 +135,14 @@ char	*ft_itoa(int n);
 size_t	nblen(int nbr);
 void	print_hud(t_data *data, char *string);
 void	ft_putstr_fd(char *s, int fd);
+void	shoot(t_data *data);
+void	print_map_3(t_data *data, int x, int y);
+void	setup_img_2(t_data *data, int *height, int *width);
+int		mvt_check_brocoli(t_data *data);
+int		mvt_check_1_brocoli(t_data *data, int enemy_new_x, int enemy_new_y);
+void	put_brocoli(t_data *data);
+void	move_brocoli(t_data *data);
+void	find_brocoli(t_data *data);
 
 #endif
 
