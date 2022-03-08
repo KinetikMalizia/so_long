@@ -23,6 +23,7 @@ SRC	=	so_long.c\
 		so_long_utils.c\
 		print_text.c\
 		extra.c\
+		extra2.c\
 
 
 OBJS = $(SRC:.c=.o)

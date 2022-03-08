@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:56:46 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/07 17:06:22 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:21:13 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	turn_player(t_data *data, int type, int w, int h)
 	}
 	if (data->rng > 60)
 		data->rng = 0;
+	reset_brocoli(data);
 }
 
 void	print_map(t_data *data)
@@ -106,7 +107,7 @@ void	print_map_3(t_data *data, int x, int y)
 	if (data->map.map[y][x] == 'U')
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img.upgrade, x * IMG_W, y * IMG_H);
-	if (data->map.map[y][x] == 'X')
+	if (data->map.map[y][x] == 'X' || data->map.map[y][x] == 'M' )
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->img.enemy, x * IMG_W + data->player.offset,
 			y * IMG_H + data->player.offset);

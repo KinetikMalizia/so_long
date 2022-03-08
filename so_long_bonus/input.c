@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:44:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/07 17:29:17 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:21:12 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ int	key_hook(t_data *data)
 		data->player.offset = 0;
 		data->z = 0;
 	}
-	if (data->z % 2000 == 0)
+	if (data->z % 500 == 0)
 		next_frame(data);
+	if (data->z % data->delay * 8 == 0)
+		find_brocoli(data);
 	mlx_hook(data->win, 2, 1L << 1, keyhook_inputs, data);
 	mlx_hook(data->win, 17, 1L << 0, win_exit, data);
 	return (0);

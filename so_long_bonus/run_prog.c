@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:48:42 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/07 17:31:44 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:51:50 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	mvt_check_1(t_data *data, int new_x, int new_y)
 		collect(data, new_x, new_y);
 		return (1);
 	}
-	else if (data->map.map[new_y][new_x] == 'X')
+	else if (data->map.map[new_y][new_x] == 'X' || data->map.map[new_y][new_x] == 'M')
 		win_exit(0, NULL);
 	else if (data->map.map[new_y][new_x] == 'E')
 	{
@@ -86,7 +86,6 @@ void	next_frame(t_data *data)
 		data->steps += 1;
 		print_hud(data, NULL);
 	}
-	find_brocoli(data);
 	if (data->map.collectables == 0)
 	{
 		print_hud(data, "Good job!");

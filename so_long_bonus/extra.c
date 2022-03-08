@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:55:55 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/03/07 17:31:41 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:49:32 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,19 @@ int	mvt_check_brocoli(t_data *data)
 
 	enemy_new_y = data->player.enemy_p_y + data->player.enemy_delta_y;
 	enemy_new_x = data->player.enemy_p_x + data->player.enemy_delta_x;
-	if (mvt_check_1(data, enemy_new_x, enemy_new_y))
+	if (mvt_check_1_brocoli(data, enemy_new_x, enemy_new_y))
 		return (1);
+	data->player.enemy_delta_x = 0;
+	data->player.enemy_delta_y = 0;
 	return (0);
 }
 
 int	mvt_check_1_brocoli(t_data *data, int enemy_new_x, int enemy_new_y)
 {
-	if (data->map.map[enemy_new_y][enemy_new_x] == '1')
-		return (0);
-	else if (data->map.map[enemy_new_y][enemy_new_x] == '0')
+	if (data->map.map[enemy_new_y][enemy_new_x] == '0')
 		return (1);
-	else if (data->map.map[enemy_new_y][enemy_new_x] == 'C')
-		return (0);
-	else if (data->map.map[enemy_new_y][enemy_new_x] == 'X')
-		return (0);
-	else if (data->map.map[enemy_new_y][enemy_new_x] == 'E')
-		return (0);
+	if (data->map.map[enemy_new_y][enemy_new_x] == 'P')
+		win_exit(0, data);
 	return (0);
 }
 
@@ -74,37 +70,30 @@ void	put_brocoli(t_data *data)
 	enemy_new_y = data->player.enemy_p_y + data->player.enemy_delta_y;
 	enemy_new_x = data->player.enemy_p_x + data->player.enemy_delta_x;
 	data->map.map[data->player.enemy_p_y][data->player.enemy_p_x] = '0';
-	data->map.map[enemy_new_y][enemy_new_x] = 'X';
+	data->map.map[enemy_new_y][enemy_new_x] = 'M';
 	data->player.enemy_p_x = 0;
 	data->player.enemy_p_y = 0;
 }
 
 void	move_brocoli(t_data *data)
 {
-	if (data->rng >= 0 && data->rng < 15)
+	int	mov;
+
+	mov = 0;
+	while (!mov)
 	{
-		data->player.enemy_delta_y = -1;
-		if (mvt_check_brocoli(data) == 1)
-			put_brocoli(data);
+		if (data->rng >= 0 && data->rng < 15)
+			data->player.enemy_delta_y = -1;
+		else if (data->rng >= 0 && data->rng < 30)
+			data->player.enemy_delta_y = +1;
+		else if (data->rng >= 0 && data->rng < 45)
+			data->player.enemy_delta_x = -1;
+		else if (data->rng >= 0 && data->rng < 59)
+			data->player.enemy_delta_x = +1;
+		mov = mvt_check_brocoli(data);
+		data->rng += 15;
 	}
-	else if (data->rng >= 15 && data->rng < 30)
-	{
-		data->player.enemy_delta_y = +1;
-		if (mvt_check_brocoli(data) == 1)
-			put_brocoli(data);
-	}
-	else if (data->rng >= 30 && data->rng < 45)
-	{
-		data->player.enemy_delta_x = -1;
-		if (mvt_check_brocoli(data) == 1)
-			put_brocoli(data);
-	}
-	else if (data->rng >= 45 && data->rng < 59)
-	{
-		data->player.enemy_delta_x = +1;
-		if (mvt_check_brocoli(data) == 1)
-			put_brocoli(data);
-	}
+	put_brocoli(data);
 	data->player.enemy_delta_x = 0;
 	data->player.enemy_delta_y = 0;
 }

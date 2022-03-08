@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:57:11 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/07 11:21:03 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 10:38:46 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,5 @@ void	print_objects(t_data *data, int x, int y)
 		data->map.collectables += 1;
 	}
 	if (data->map.map[y][x] == 'E')
-	{
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.exit_s, x * IMG_W, y * IMG_H);
 		data->map.exit += 1;
-	}
 }
