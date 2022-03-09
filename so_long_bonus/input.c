@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:44:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/08 13:21:12 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/09 11:45:01 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	keyhook_inputs(int keycode, t_data *data)
 		turn_player(data, 4, w, h);
 	if (keycode == 3 && data->player.upgrade)
 		shoot(data);
-	printf("%d\n", data->rng);
 	return (0);
 }
 
@@ -51,10 +50,26 @@ int	key_hook(t_data *data)
 		data->player.offset = 0;
 		data->z = 0;
 	}
-	if (data->z % 500 == 0)
+	if (data->z % 1000 == 0)
+			data->rng += 3;
+	if (data->z == 500)
+			data->rng /= 2;
+	if (data->z == 500 && data->rng > 26)
+			data->rng -= 24;
+	if (data->z % 750 == 0)					
+	{
 		next_frame(data);
-	if (data->z % data->delay * 8 == 0)
+		printf("rng__%d\n", data->rng);
+	}
+	if (data->z == 11000)
+	{
 		find_brocoli(data);
+		printf("delay__%d\n", data->z);
+	}
+	if (data->z == 5000)
+        reset_brocoli(data);
+    if (data->rng > 100)
+		data->rng = 0;
 	mlx_hook(data->win, 2, 1L << 1, keyhook_inputs, data);
 	mlx_hook(data->win, 17, 1L << 0, win_exit, data);
 	return (0);

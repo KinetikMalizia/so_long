@@ -82,15 +82,6 @@ typedef struct s_map
 	int		exit;
 }				t_map;
 
-typedef struct s_enemy
-{
-	int				e_px;
-	int				e_py;
-	int				e_dx;
-	int				e_dy;
-	struct s_enemy	*next;
-}				t_enemy;
-
 typedef struct s_data {
 	void		*mlx;
 	void		*win;
@@ -104,7 +95,6 @@ typedef struct s_data {
 	t_map		map;
 	t_img		img;
 	t_player	player;
-	t_enemy		**elist;
 }				t_data;
 
 int		win_exit(int keycode, t_data *vars);
@@ -154,8 +144,6 @@ void	put_brocoli(t_data *data);
 void	move_brocoli(t_data *data);
 void	find_brocoli(t_data *data);
 void	reset_brocoli(t_data *data);
-t_enemy	*newenemy(int px, int py);
-void	ft_lstadd(t_data *data, t_enemy *new);
 
 #endif
 

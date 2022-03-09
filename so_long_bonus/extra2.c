@@ -3,35 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   extra2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 09:48:42 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/03/08 10:59:27 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/09 11:41:49 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-t_enemy	*newenemy(int px, int py)
-{
-	t_enemy	*ptr;
-
-	ptr = malloc(sizeof(t_enemy));
-	if (!ptr)
-		return (NULL);
-	ptr->e_px = px;
-	ptr->e_py = py;
-	ptr->e_dx = 0;
-	ptr->e_dy = 0;
-	ptr->next = NULL;
-	return (ptr);
-}
-
-void	ft_lstadd(t_data *data, t_enemy *new)
-{
-	new->next = *data->elist;
-	*data->elist = new;
-}
 
 void	reset_brocoli(t_data *data)
 {

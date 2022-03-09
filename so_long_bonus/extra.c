@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:55:55 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/03/08 13:49:32 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 22:07:34 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ void	move_brocoli(t_data *data)
 	mov = 0;
 	while (!mov)
 	{
-		if (data->rng >= 0 && data->rng < 15)
+		if (data->rng >= 0 && data->rng <= 25)
 			data->player.enemy_delta_y = -1;
-		else if (data->rng >= 0 && data->rng < 30)
+		else if (data->rng >= 0 && data->rng <= 50)
 			data->player.enemy_delta_y = +1;
-		else if (data->rng >= 0 && data->rng < 45)
+		else if (data->rng >= 0 && data->rng <= 75)
 			data->player.enemy_delta_x = -1;
-		else if (data->rng >= 0 && data->rng < 59)
+		else if (data->rng >= 0 && data->rng <= 99)
 			data->player.enemy_delta_x = +1;
 		mov = mvt_check_brocoli(data);
-		data->rng += 15;
+		data->rng += 1;
 	}
 	put_brocoli(data);
 	data->player.enemy_delta_x = 0;

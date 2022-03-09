@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:57:11 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/08 10:38:46 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:48:39 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void	print_objects(t_data *data, int x, int y)
 	}
 	if (data->map.map[y][x] == 'E')
 		data->map.exit += 1;
+	find_brocoli(data);
 }
