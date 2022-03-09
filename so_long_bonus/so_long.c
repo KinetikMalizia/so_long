@@ -24,6 +24,7 @@ int	win_exit(int keycode, t_data *data)
 void	win_game(t_data *data)
 {
 	data->steps += 1;
+	ft_putstr_fd("\n***************************\n", 1);
 	prline("CONGRATULATIONS!\nTotal steps: ", data->steps);
 	ft_putstr_fd("\n***************************\n", 1);
 	exit(EXIT_SUCCESS);
@@ -37,7 +38,6 @@ int	main(int ac, char **av)
 	data.z = 0;
 	data.delay = 1500;
 	ft_window_size(&data, av);
-	ft_putstr_fd("***************************\n", 1);
 	data.map.map = ft_calloc(data.size_y + 1, sizeof(char *));
 	data.mlx = mlx_init();
 	if (!data.mlx)

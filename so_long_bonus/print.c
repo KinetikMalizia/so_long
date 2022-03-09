@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:56:46 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/08 22:20:19 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/09 14:12:37 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	print_map_3(t_data *data, int x, int y)
 			data->img.upgrade, x * IMG_W, y * IMG_H);
 	if (data->map.map[y][x] == 'X' || data->map.map[y][x] == 'M' )
 		mlx_put_image_to_window(data->mlx, data->win,
-			data->img.enemy, x * IMG_W + data->player.offset,
+			data->img.enemy, x * IMG_W + (data->player.offset / 2),
 			y * IMG_H + data->player.offset);
 	if (data->map.map[y][x] == 'E')
 	{

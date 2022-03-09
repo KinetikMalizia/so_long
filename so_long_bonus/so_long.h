@@ -144,6 +144,9 @@ void	put_brocoli(t_data *data);
 void	move_brocoli(t_data *data);
 void	find_brocoli(t_data *data);
 void	reset_brocoli(t_data *data);
+int		randomize(int n);
+void	offset(t_data *data);
+void	rng(t_data *data);
 
 #endif
 
