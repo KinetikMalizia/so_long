@@ -6,7 +6,7 @@
 /*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:48:42 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/03 11:31:36 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/03/09 15:29:36 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	mvt_check_1(t_data *data, int new_x, int new_y)
 {
 	if (data->map.map[new_y][new_x] == '1')
 	{
-		print_hub(data, 1, "can't go through walls!");
+		prline("can't go through walls!", 0);
 		return (0);
 	}
 	else if (data->map.map[new_y][new_x] == '0')
@@ -76,7 +76,7 @@ void	next_frame(t_data *data)
 	{
 		put_player(data);
 		data->steps += 1;
-		print_hub(data, 0, NULL);
+		prline("steps:", data->steps);
 
 	}
 	data->player.delta_x = 0;
