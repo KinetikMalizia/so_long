@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extra2.c                                           :+:      :+:    :+:   */
+/*   brocoli.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 09:48:42 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/03/09 15:05:31 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/15 11:23:21 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,26 @@ void	move_brocoli(t_data *data)
 		put_brocoli(data);
 	data->player.enemy_delta_x = 0;
 	data->player.enemy_delta_y = 0;
+}
+
+void	find_brocoli(t_data *data)
+{
+	data->map.y = 0;
+	while (data->map.y < data->size_y / IMG_W)
+	{
+		data->map.x = 0;
+		while (data->map.x < data->size_x / IMG_H)
+		{
+			if (data->map.map[data->map.y][data->map.x] == 'X')
+			{
+				data->player.enemy_p_y = data->map.y;
+				data->player.enemy_p_x = data->map.x;
+				move_brocoli(data);
+			}
+			data->map.x += 1;
+		}
+		data->map.y += 1;
+	}
+	data->map.x = 0;
+	data->map.y = 0;
 }

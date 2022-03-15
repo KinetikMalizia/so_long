@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:48:42 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/08 13:51:50 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/15 11:27:04 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	mvt_check_1(t_data *data, int new_x, int new_y)
 		collect(data, new_x, new_y);
 		return (1);
 	}
-	else if (data->map.map[new_y][new_x] == 'X' || data->map.map[new_y][new_x] == 'M')
+	else if (data->map.map[new_y][new_x] == 'X' ||
+		data->map.map[new_y][new_x] == 'M')
 		win_exit(0, NULL);
 	else if (data->map.map[new_y][new_x] == 'E')
 	{
@@ -94,26 +95,4 @@ void	next_frame(t_data *data)
 	data->player.delta_x = 0;
 	data->player.delta_y = 0;
 	print_map(data);
-}
-
-void	find_brocoli(t_data *data)
-{
-	data->map.y = 0;
-	while (data->map.y < data->size_y / IMG_W)
-	{
-		data->map.x = 0;
-		while (data->map.x < data->size_x / IMG_H)
-		{
-			if (data->map.map[data->map.y][data->map.x] == 'X')
-			{
-				data->player.enemy_p_y = data->map.y;
-				data->player.enemy_p_x = data->map.x;
-				move_brocoli(data);
-			}
-			data->map.x += 1;
-		}
-		data->map.y += 1;
-	}
-	data->map.x = 0;
-	data->map.y = 0;
 }
