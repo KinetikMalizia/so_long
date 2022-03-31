@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:55:55 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/03/09 15:12:30 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:37:23 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,16 @@ void	rng(t_data *data)
 		data->rng += 5;
 	if (data->rng > 50)
 		data->rng = 0;
+}
+
+void	random_input(t_data *data, int keycode)
+{
+	if (keycode == UP || keycode == W)
+		data->rng += 10;
+	if (keycode == DOWN || keycode == S)
+		data->rng *= 2;
+	if (keycode == LEFT || keycode == A)
+		data->rng += 2;
+	if (keycode == RIGHT || keycode == D)
+		data->rng /= 2;
 }

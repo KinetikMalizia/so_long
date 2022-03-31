@@ -114,6 +114,7 @@ void	shoot(t_data *data);
 int		randomize(int n);
 void	offset(t_data *data);
 void	rng(t_data *data);
+void	random_input(t_data *data, int keycode);
 /*input*/
 int		keyhook_inputs(int keycode, t_data *vars);
 int		key_hook(t_data *data);

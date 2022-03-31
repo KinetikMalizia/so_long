@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:56:46 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/15 11:27:06 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:37:25 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,15 @@ void	print_wall(t_data *data, int x, int y)
 void	turn_player(t_data *data, int type, int w, int h)
 {
 	if (type == 1)
-	{
 		data->player.delta_y = -1;
-		data->rng += 10;
-	}
 	if (type == 2)
-	{
 		data->player.delta_y = +1;
-		data->rng *= 2;
-	}
 	if (type == 3)
 	{
 		data->img.player = mlx_xpm_file_to_image(data->mlx,
 				"./sprite_xpm/supervan_L.xpm", &w, &h);
 		data->player.delta_x = -1;
 		data->player.direction = -1;
-		data->rng += 2;
 	}
 	if (type == 4)
 	{
@@ -66,7 +59,6 @@ void	turn_player(t_data *data, int type, int w, int h)
 				"./sprite_xpm/supervan_R.xpm", &w, &h);
 		data->player.delta_x = +1;
 		data->player.direction = +1;
-		data->rng /= 2;
 	}
 	reset_brocoli(data);
 }

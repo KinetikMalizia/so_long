@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:48:42 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/15 11:27:04 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:37:27 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int	mvt_check(t_data *data)
 int	mvt_check_1(t_data *data, int new_x, int new_y)
 {
 	if (data->map.map[new_y][new_x] == '1')
-	{
 		print_hud(data, "can't go through walls!");
-		return (0);
-	}
 	else if (data->map.map[new_y][new_x] == '0')
 		return (1);
 	else if (data->map.map[new_y][new_x] == 'C' ||
@@ -59,9 +56,7 @@ int	mvt_check_1(t_data *data, int new_x, int new_y)
 		if (data->map.collectables <= 0)
 			win_game(data);
 		else
-		{
 			print_hud(data, "Save all the pizzas!");
-		}
 	}
 	return (0);
 }
@@ -91,6 +86,11 @@ void	next_frame(t_data *data)
 	{
 		print_hud(data, "Good job!");
 		data->map.collectables -= 1;
+	}
+	if (data->player.upgrade == 1)
+	{
+		print_hud(data, "Press F to shoot");
+		data->player.upgrade = 2;
 	}
 	data->player.delta_x = 0;
 	data->player.delta_y = 0;

@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:44:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/09 15:12:59 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:37:24 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	keyhook_inputs(int keycode, t_data *data)
 		turn_player(data, 4, w, h);
 	if (keycode == 3 && data->player.upgrade)
 		shoot(data);
+	random_input(data, keycode);
 	return (0);
 }
 
