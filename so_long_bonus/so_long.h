@@ -94,7 +94,9 @@ typedef struct s_data {
 	int			delay;
 	t_map		map;
 	t_img		img;
+	t_img		*img_ptr;
 	t_player	player;
+	t_player	*player_ptr;
 }				t_data;
 
 /*check*/
@@ -159,6 +161,7 @@ void	ft_bzero(void *b, size_t len);
 /*so_long*/
 int		win_exit(int keycode, t_data *vars);
 void	win_game(t_data *data);
+void	free_all(t_data *data);
 /*----*/
 
 #endif
