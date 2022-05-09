@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 09:48:42 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/03/15 11:23:21 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:07:02 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	move_brocoli(t_data *data)
 {
 	int	mov;
 
+	data->player.enemy_delta_x = 0;
+	data->player.enemy_delta_y = 0;
 	mov = randomize(data->rng);
 	if (mov == 0)
 		data->player.enemy_delta_y = -1;

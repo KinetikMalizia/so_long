@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:48:42 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/31 13:37:27 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:07:00 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	mvt_check_1(t_data *data, int new_x, int new_y)
 	}
 	else if (data->map.map[new_y][new_x] == 'X' ||
 		data->map.map[new_y][new_x] == 'M')
-		win_exit(0, NULL);
+		win_exit(0, data);
 	else if (data->map.map[new_y][new_x] == 'E')
 	{
 		if (data->map.collectables <= 0)

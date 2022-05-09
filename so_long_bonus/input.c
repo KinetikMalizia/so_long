@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:44:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/31 13:37:24 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:06:56 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	keyhook_inputs(int keycode, t_data *data)
 	int	w;
 	int	h;
 
+	w = 0;
+	h = 0;
 	if (keycode == ESC)
 		win_exit(keycode, data);
 	if (keycode == UP || keycode == W)

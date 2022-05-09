@@ -15,13 +15,10 @@
 
 int	win_exit(int keycode, t_data *data)
 {
+	(void)keycode;
 	ft_putstr_fd("\nsuka\nyou move to trash\n", 1);
 	free_all(data);
 	mlx_destroy_window(data->mlx, data->win);
-	while(1)
-	{
-
-	}
 	exit(0);
 }
 
@@ -33,10 +30,6 @@ void	win_game(t_data *data)
 	ft_putstr_fd("\n***************************\n", 1);
 	free_all(data);
 	mlx_destroy_window(data->mlx, data->win);
-	while(1)
-	{
-
-	}
 	exit(EXIT_SUCCESS);
 }
 
@@ -44,6 +37,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
+	(void)ac;
 	data.rng = 0;
 	data.z = 0;
 	data.delay = 1500;

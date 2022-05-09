@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:00:27 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/03/08 10:48:07 by fmalizia         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:10:51 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	print_hud(t_data *data, char *string)
 	num = ft_itoa(data->steps);
 	mlx_string_put(data->mlx, data->win,
 		(data->size_x / 2) + 18, data->size_y + 20, 0xfffafa, num);
+	free(num);
 	num = ft_itoa(data->player.collected);
 	if (data->player.upgrade > 0)
 		mlx_string_put(data->mlx, data->win,

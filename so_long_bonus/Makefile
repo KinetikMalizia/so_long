@@ -34,10 +34,10 @@ CFLAGS = -Wall -Werror -Wextra
 
 $(NAME): $(OBJS)
 				@make -C $(MLX)
-				gcc $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+				gcc $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $(NAME)
 
 %.o: %.c
-		gcc -Iminilibx -c $< -o $@
+		gcc -Iminilibx $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
