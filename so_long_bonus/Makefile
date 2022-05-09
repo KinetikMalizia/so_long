@@ -50,8 +50,13 @@ mlxclean:
 reset: mlxclean fclean
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
+		@rm -f $(NAME)_bonus
+
+bonus: $(OBJS)
+				@make -C $(MLX)
+				gcc $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit $(CFLAGS) -o $(NAME)_bonus
 
 re: fclean all
 
-.PHONY: all clean fclean re mlxclean reset
+.PHONY: all clean fclean re mlxclean reset bonus
