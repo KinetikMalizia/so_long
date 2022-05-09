@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:55:55 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/09 15:47:01 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/09 22:50:39 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ void	offset(t_data *data)
 		data->player.offset = 0;
 	}
 	if (data->z == data->delay * 5 || data->z == data->delay * 7)
+	{
+		data->img.enemy = mlx_xpm_file_to_image(data->mlx,
+				"./sprite_xpm/b_electro1.xpm", &w, &h);
 		data->player.offset = -2;
+	}
 	if (data->z == data->delay * 6)
 		data->player.offset = -5;
 	if (data->z == data->delay * 8)
