@@ -13,6 +13,17 @@
 #include "so_long.h"
 #include "stdio.h"
 
+int	randomize(int n)
+{
+	int	num;
+
+	num = (n * 15) % 17;
+	num = (num * 45) % 51;
+	num = (num * 86) % 93;
+	num = (num * 17) % 4;
+	return (num);
+}
+
 int	win_exit(int keycode, t_data *data)
 {
 	(void)keycode;

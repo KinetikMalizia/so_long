@@ -113,8 +113,8 @@ void	move_brocoli(t_data *data);
 void	find_brocoli(t_data *data);
 /*extra*/
 void	shoot(t_data *data);
-int		randomize(int n);
 void	offset(t_data *data);
+void	offset_1(t_data *data, int h, int w);
 void	rng(t_data *data);
 void	random_input(t_data *data, int keycode);
 /*input*/
@@ -163,6 +163,7 @@ int		win_exit(int keycode, t_data *vars);
 int		cross_exit(int keycode, t_data *data);
 void	win_game(t_data *data);
 void	free_all(t_data *data);
+int		randomize(int n);
 /*----*/
 
 #endif
